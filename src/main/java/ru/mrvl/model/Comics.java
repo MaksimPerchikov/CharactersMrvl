@@ -3,6 +3,7 @@ package ru.mrvl.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -20,7 +21,7 @@ public class Comics {
     @Column(name = "name_comics")
     private String nameComics;
 
-    /*@ManyToOne //одному персонажу соответствует множество комиксов
-    @JoinColumn(name = "character_id_characters")
-    private Characters character;*/
+    /*@OneToMany(cascade = CascadeType.ALL) //одному комиксу соответствует множество персонажей
+    @JoinColumn(name = "charactersList_id_characters")
+    private List<Characters> charactersList;*/
 }

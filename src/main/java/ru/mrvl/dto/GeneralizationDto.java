@@ -11,7 +11,8 @@ import lombok.ToString;
 @ToString
 public class GeneralizationDto {
 
-    private String nameComics;
-    private String nameCharacter;
     private String affiliation;
+    private String nameCharacter;
+    private String nameComics;
+
 }

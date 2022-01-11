@@ -3,7 +3,7 @@ package ru.mrvl.service.interfaces;
 import ru.mrvl.dto.GeneralizationDto;
 import ru.mrvl.model.Characters;
 import ru.mrvl.model.Comics;
-import ru.mrvl.model.Generalization;
+
 
 import java.util.List;
 
@@ -17,9 +17,7 @@ public interface GeneralizationInterface {
     Object findByIdComics(Long id);
 
 
-    Generalization converterDtoToEntity(GeneralizationDto generalizationDto);
-    Generalization converterEntityToDto(Generalization generalization);
-
+    Object converterDtoToEntity(GeneralizationDto generalizationDto) throws Exception;
 
     List<Comics> sortedByIdAscendingComics();
     List<Comics> sortedByIdDescendingComics();
@@ -28,5 +26,10 @@ public interface GeneralizationInterface {
     List<Characters> sortedByIdAscendingCharacters();
     List<Characters> sortedByIdDescendingCharacters();
     List<Characters> sortedByNameCharacters();
-   
+
+
+    List<Comics> findComicsByCharacterName(String name);
+    List<Characters> findCharactersByCharacterName(String name);
+
+
 }

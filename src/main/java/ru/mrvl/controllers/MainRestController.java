@@ -2,8 +2,10 @@ package ru.mrvl.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.mrvl.dto.GeneralizationDto;
 import ru.mrvl.model.Characters;
 import ru.mrvl.model.Comics;
+
 import ru.mrvl.repository.ComicsRepository;
 import ru.mrvl.service.GeneralizationInterfaceImpl;
 
@@ -29,11 +31,11 @@ public class MainRestController {
         return generalizationInterfaceImpl.findAllCharacters();
     }
 
-    //добавление персонажа
+    /*//добавление персонажа
     @PostMapping(value = "/characters/add")
     public String addCharac(@RequestBody Characters characters){
         return generalizationInterfaceImpl.addCharacter(characters);
-    }
+    }*/
 
     //поиск персонажа по айди
     @GetMapping(value = "/characters/{characterId}")
@@ -52,11 +54,11 @@ public class MainRestController {
         return generalizationInterfaceImpl.findByIdComics(id);
     }
 
-    //Добавить комикс
+    /*//Добавить комикс
     @PostMapping(value = "/comics/add")
     public String addCom(@RequestBody Comics comics) {
         return generalizationInterfaceImpl.addComics(comics);
-    }
+    }*/
 
   //  ---------------------------------сортировки--------------------------------------  //
 
@@ -92,6 +94,27 @@ public class MainRestController {
     @GetMapping(value = "/characters/sorted/name")
     public List<Characters> sortedCharactersByName(){
         return generalizationInterfaceImpl.sortedByNameCharacters();
+    }
+
+    //-------------------------конвертер дто в сущность--------------------------//
+
+    //ввод
+    @PostMapping("/inputDto")
+    public Object convertDtoToEnt(@RequestBody GeneralizationDto generalizationDto) throws Exception{
+        return generalizationInterfaceImpl.converterDtoToEntity(generalizationDto);
+    }
+
+
+    //вывод всех комиксов, в которых есть данный персонаж
+    @GetMapping("/characters/{characterId}/comics")
+    public List<Comics> findComicsByCharacterName(@PathVariable("characterId") String characterId){
+         return generalizationInterfaceImpl.findComicsByCharacterName(characterId);
+    }
+
+    //вывод всех персонажей, которые есть в данном комиксе
+    @GetMapping("/comics/{comicsId}/characters")
+    public List<Characters> findCharactersByCharacterNameMethod(@PathVariable("comicsId") String comicsId){
+        return generalizationInterfaceImpl.findCharactersByCharacterName(comicsId);
     }
 
 

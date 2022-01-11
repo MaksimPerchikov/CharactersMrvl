@@ -23,4 +23,8 @@ public class Characters {
     @Column(name = "affiliation")
     private String affiliation;
 
+    @ManyToOne //одному персонажу соответствует множество комиксов
+    @JoinColumn(name = "character_id_characters")
+    private Comics comics;
+
 }
