@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @RequiredArgsConstructor
 @ToString
-public class ComicsCharactersDto {
+public class GeneralizationDto {
 
     private String nameComics;
     private String nameCharacter;
